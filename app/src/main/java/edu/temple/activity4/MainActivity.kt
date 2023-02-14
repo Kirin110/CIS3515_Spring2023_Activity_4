@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         // Verify correctness by examining array values.
         val textSizes = Array(20){(it + 1) * 5}
 
-        for(i in 0..textSizes.size)
+        for(i in 0 until textSizes.size)
             Log.d("Array values", textSizes[i].toString())
 
         textSizeSelector.adapter = TextSizeAdapter(textSizes)
