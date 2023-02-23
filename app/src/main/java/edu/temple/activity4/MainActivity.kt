@@ -1,5 +1,6 @@
 package edu.temple.activity4
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.title = "Dashboard"
+
         textSizeSelector = findViewById(R.id.textSizeSelectorRecyclerView)
         textSizeDisplay = findViewById(R.id.textSizeDisplayTextView)
 
@@ -29,8 +32,12 @@ class MainActivity : AppCompatActivity() {
 
         textSizeSelector.adapter = TextSizeAdapter(textSizes) {
             textSizeDisplay.textSize = it
+            val intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("textSize", it)
+            startActivity(intent)
         }
         textSizeSelector.layoutManager = LinearLayoutManager(this)
+
     }
 }
 /* Convert to RecyclerView.Adapter */
